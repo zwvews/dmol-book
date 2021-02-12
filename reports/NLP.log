@@ -1,0 +1,181 @@
+Traceback (most recent call last):
+  File "/usr/share/miniconda/lib/python3.8/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/usr/share/miniconda/lib/python3.8/site-packages/nbclient/client.py", line 1107, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/share/miniconda/lib/python3.8/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/usr/share/miniconda/lib/python3.8/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/share/miniconda/lib/python3.8/asyncio/base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "/usr/share/miniconda/lib/python3.8/site-packages/nbclient/client.py", line 553, in async_execute
+    await self.async_execute_cell(
+  File "/usr/share/miniconda/lib/python3.8/site-packages/nbclient/client.py", line 852, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/usr/share/miniconda/lib/python3.8/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+model = tf.keras.Sequential()
+
+# make embedding and indicate that 0 should be treated as padding mask
+model.add(tf.keras.layers.Embedding(input_dim=vocab_size, output_dim=16, mask_zero=True))
+
+# RNN layer
+model.add(tf.keras.layers.GRU(32))
+# a dense hidden layer
+model.add(tf.keras.layers.Dense(32, activation='relu'))
+# regression, so no activation
+model.add(tf.keras.layers.Dense(1))
+
+model.summary()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNotImplementedError[0m                       Traceback (most recent call last)
+[0;32m<ipython-input-5-e54039901c87>[0m in [0;36m<module>[0;34m[0m
+[1;32m      5[0m [0;34m[0m[0m
+[1;32m      6[0m [0;31m# RNN layer[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 7[0;31m [0mmodel[0m[0;34m.[0m[0madd[0m[0;34m([0m[0mtf[0m[0;34m.[0m[0mkeras[0m[0;34m.[0m[0mlayers[0m[0;34m.[0m[0mGRU[0m[0;34m([0m[0;36m32[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      8[0m [0;31m# a dense hidden layer[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      9[0m [0mmodel[0m[0;34m.[0m[0madd[0m[0;34m([0m[0mtf[0m[0;34m.[0m[0mkeras[0m[0;34m.[0m[0mlayers[0m[0;34m.[0m[0mDense[0m[0;34m([0m[0;36m32[0m[0;34m,[0m [0mactivation[0m[0;34m=[0m[0;34m'relu'[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/training/tracking/base.py[0m in [0;36m_method_wrapper[0;34m(self, *args, **kwargs)[0m
+[1;32m    455[0m     [0mself[0m[0;34m.[0m[0m_self_setattr_tracking[0m [0;34m=[0m [0;32mFalse[0m  [0;31m# pylint: disable=protected-access[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    456[0m     [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 457[0;31m       [0mresult[0m [0;34m=[0m [0mmethod[0m[0;34m([0m[0mself[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    458[0m     [0;32mfinally[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    459[0m       [0mself[0m[0;34m.[0m[0m_self_setattr_tracking[0m [0;34m=[0m [0mprevious_value[0m  [0;31m# pylint: disable=protected-access[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/engine/sequential.py[0m in [0;36madd[0;34m(self, layer)[0m
+[1;32m    219[0m       [0;31m# If the model is being built continuously on top of an input layer:[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    220[0m       [0;31m# refresh its output.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 221[0;31m       [0moutput_tensor[0m [0;34m=[0m [0mlayer[0m[0;34m([0m[0mself[0m[0;34m.[0m[0moutputs[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    222[0m       [0;32mif[0m [0mlen[0m[0;34m([0m[0mnest[0m[0;34m.[0m[0mflatten[0m[0;34m([0m[0moutput_tensor[0m[0;34m)[0m[0;34m)[0m [0;34m!=[0m [0;36m1[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    223[0m         [0;32mraise[0m [0mValueError[0m[0;34m([0m[0mSINGLE_LAYER_OUTPUT_ERROR_MSG[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/layers/recurrent.py[0m in [0;36m__call__[0;34m(self, inputs, initial_state, constants, **kwargs)[0m
+[1;32m    657[0m [0;34m[0m[0m
+[1;32m    658[0m     [0;32mif[0m [0minitial_state[0m [0;32mis[0m [0;32mNone[0m [0;32mand[0m [0mconstants[0m [0;32mis[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 659[0;31m       [0;32mreturn[0m [0msuper[0m[0;34m([0m[0mRNN[0m[0;34m,[0m [0mself[0m[0;34m)[0m[0;34m.[0m[0m__call__[0m[0;34m([0m[0minputs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    660[0m [0;34m[0m[0m
+[1;32m    661[0m     [0;31m# If any of `initial_state` or `constants` are specified and are Keras[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/engine/base_layer.py[0m in [0;36m__call__[0;34m(self, *args, **kwargs)[0m
+[1;32m    923[0m     [0;31m# >> model = tf.keras.Model(inputs, outputs)[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    924[0m     [0;32mif[0m [0m_in_functional_construction_mode[0m[0;34m([0m[0mself[0m[0;34m,[0m [0minputs[0m[0;34m,[0m [0margs[0m[0;34m,[0m [0mkwargs[0m[0;34m,[0m [0minput_list[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 925[0;31m       return self._functional_construction_call(inputs, args, kwargs,
+[0m[1;32m    926[0m                                                 input_list)
+[1;32m    927[0m [0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/engine/base_layer.py[0m in [0;36m_functional_construction_call[0;34m(self, inputs, args, kwargs, input_list)[0m
+[1;32m   1115[0m           [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1116[0m             [0;32mwith[0m [0mops[0m[0;34m.[0m[0menable_auto_cast_variables[0m[0;34m([0m[0mself[0m[0;34m.[0m[0m_compute_dtype_object[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1117[0;31m               [0moutputs[0m [0;34m=[0m [0mcall_fn[0m[0;34m([0m[0mcast_inputs[0m[0;34m,[0m [0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1118[0m [0;34m[0m[0m
+[1;32m   1119[0m           [0;32mexcept[0m [0merrors[0m[0;34m.[0m[0mOperatorNotAllowedInGraphError[0m [0;32mas[0m [0me[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/layers/recurrent_v2.py[0m in [0;36mcall[0;34m(self, inputs, mask, training, initial_state)[0m
+[1;32m    407[0m [0;34m[0m[0m
+[1;32m    408[0m     [0;31m# GRU does not support constants. Ignore it during process.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 409[0;31m     [0minputs[0m[0;34m,[0m [0minitial_state[0m[0;34m,[0m [0m_[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_process_inputs[0m[0;34m([0m[0minputs[0m[0;34m,[0m [0minitial_state[0m[0;34m,[0m [0;32mNone[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    410[0m [0;34m[0m[0m
+[1;32m    411[0m     [0;32mif[0m [0misinstance[0m[0;34m([0m[0mmask[0m[0;34m,[0m [0mlist[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/layers/recurrent.py[0m in [0;36m_process_inputs[0;34m(self, inputs, initial_state, constants)[0m
+[1;32m    856[0m         [0minitial_state[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mstates[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    857[0m     [0;32melif[0m [0minitial_state[0m [0;32mis[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 858[0;31m       [0minitial_state[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mget_initial_state[0m[0;34m([0m[0minputs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    859[0m [0;34m[0m[0m
+[1;32m    860[0m     [0;32mif[0m [0mlen[0m[0;34m([0m[0minitial_state[0m[0;34m)[0m [0;34m!=[0m [0mlen[0m[0;34m([0m[0mself[0m[0;34m.[0m[0mstates[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/layers/recurrent.py[0m in [0;36mget_initial_state[0;34m(self, inputs)[0m
+[1;32m    639[0m     [0mdtype[0m [0;34m=[0m [0minputs[0m[0;34m.[0m[0mdtype[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    640[0m     [0;32mif[0m [0mget_initial_state_fn[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 641[0;31m       init_state = get_initial_state_fn(
+[0m[1;32m    642[0m           inputs=None, batch_size=batch_size, dtype=dtype)
+[1;32m    643[0m     [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/layers/recurrent.py[0m in [0;36mget_initial_state[0;34m(self, inputs, batch_size, dtype)[0m
+[1;32m   1947[0m [0;34m[0m[0m
+[1;32m   1948[0m   [0;32mdef[0m [0mget_initial_state[0m[0;34m([0m[0mself[0m[0;34m,[0m [0minputs[0m[0;34m=[0m[0;32mNone[0m[0;34m,[0m [0mbatch_size[0m[0;34m=[0m[0;32mNone[0m[0;34m,[0m [0mdtype[0m[0;34m=[0m[0;32mNone[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1949[0;31m     [0;32mreturn[0m [0m_generate_zero_filled_state_for_cell[0m[0;34m([0m[0mself[0m[0;34m,[0m [0minputs[0m[0;34m,[0m [0mbatch_size[0m[0;34m,[0m [0mdtype[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1950[0m [0;34m[0m[0m
+[1;32m   1951[0m [0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/layers/recurrent.py[0m in [0;36m_generate_zero_filled_state_for_cell[0;34m(cell, inputs, batch_size, dtype)[0m
+[1;32m   2962[0m     [0mbatch_size[0m [0;34m=[0m [0marray_ops[0m[0;34m.[0m[0mshape[0m[0;34m([0m[0minputs[0m[0;34m)[0m[0;34m[[0m[0;36m0[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2963[0m     [0mdtype[0m [0;34m=[0m [0minputs[0m[0;34m.[0m[0mdtype[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 2964[0;31m   [0;32mreturn[0m [0m_generate_zero_filled_state[0m[0;34m([0m[0mbatch_size[0m[0;34m,[0m [0mcell[0m[0;34m.[0m[0mstate_size[0m[0;34m,[0m [0mdtype[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   2965[0m [0;34m[0m[0m
+[1;32m   2966[0m [0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/layers/recurrent.py[0m in [0;36m_generate_zero_filled_state[0;34m(batch_size_tensor, state_size, dtype)[0m
+[1;32m   2980[0m     [0;32mreturn[0m [0mnest[0m[0;34m.[0m[0mmap_structure[0m[0;34m([0m[0mcreate_zeros[0m[0;34m,[0m [0mstate_size[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2981[0m   [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 2982[0;31m     [0;32mreturn[0m [0mcreate_zeros[0m[0;34m([0m[0mstate_size[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   2983[0m [0;34m[0m[0m
+[1;32m   2984[0m [0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/layers/recurrent.py[0m in [0;36mcreate_zeros[0;34m(unnested_state_size)[0m
+[1;32m   2975[0m     [0mflat_dims[0m [0;34m=[0m [0mtensor_shape[0m[0;34m.[0m[0mas_shape[0m[0;34m([0m[0munnested_state_size[0m[0;34m)[0m[0;34m.[0m[0mas_list[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2976[0m     [0minit_state_size[0m [0;34m=[0m [0;34m[[0m[0mbatch_size_tensor[0m[0;34m][0m [0;34m+[0m [0mflat_dims[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 2977[0;31m     [0;32mreturn[0m [0marray_ops[0m[0;34m.[0m[0mzeros[0m[0;34m([0m[0minit_state_size[0m[0;34m,[0m [0mdtype[0m[0;34m=[0m[0mdtype[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   2978[0m [0;34m[0m[0m
+[1;32m   2979[0m   [0;32mif[0m [0mnest[0m[0;34m.[0m[0mis_sequence[0m[0;34m([0m[0mstate_size[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/util/dispatch.py[0m in [0;36mwrapper[0;34m(*args, **kwargs)[0m
+[1;32m    199[0m     [0;34m"""Call target, and fall back on dispatchers if there is a TypeError."""[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    200[0m     [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 201[0;31m       [0;32mreturn[0m [0mtarget[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    202[0m     [0;32mexcept[0m [0;34m([0m[0mTypeError[0m[0;34m,[0m [0mValueError[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    203[0m       [0;31m# Note: convert_to_eager_tensor currently raises a ValueError, not a[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/ops/array_ops.py[0m in [0;36mwrapped[0;34m(*args, **kwargs)[0m
+[1;32m   2745[0m [0;34m[0m[0m
+[1;32m   2746[0m   [0;32mdef[0m [0mwrapped[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 2747[0;31m     [0mtensor[0m [0;34m=[0m [0mfun[0m[0;34m([0m[0;34m*[0m[0margs[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   2748[0m     [0mtensor[0m[0;34m.[0m[0m_is_zeros_tensor[0m [0;34m=[0m [0;32mTrue[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2749[0m     [0;32mreturn[0m [0mtensor[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/ops/array_ops.py[0m in [0;36mzeros[0;34m(shape, dtype, name)[0m
+[1;32m   2792[0m           [0;31m# Create a constant if it won't be very big. Otherwise create a fill[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2793[0m           [0;31m# op to prevent serialized GraphDefs from becoming too large.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 2794[0;31m           [0moutput[0m [0;34m=[0m [0m_constant_if_small[0m[0;34m([0m[0mzero[0m[0;34m,[0m [0mshape[0m[0;34m,[0m [0mdtype[0m[0;34m,[0m [0mname[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   2795[0m           [0;32mif[0m [0moutput[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2796[0m             [0;32mreturn[0m [0moutput[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/ops/array_ops.py[0m in [0;36m_constant_if_small[0;34m(value, shape, dtype, name)[0m
+[1;32m   2730[0m [0;32mdef[0m [0m_constant_if_small[0m[0;34m([0m[0mvalue[0m[0;34m,[0m [0mshape[0m[0;34m,[0m [0mdtype[0m[0;34m,[0m [0mname[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2731[0m   [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 2732[0;31m     [0;32mif[0m [0mnp[0m[0;34m.[0m[0mprod[0m[0;34m([0m[0mshape[0m[0;34m)[0m [0;34m<[0m [0;36m1000[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   2733[0m       [0;32mreturn[0m [0mconstant[0m[0;34m([0m[0mvalue[0m[0;34m,[0m [0mshape[0m[0;34m=[0m[0mshape[0m[0;34m,[0m [0mdtype[0m[0;34m=[0m[0mdtype[0m[0;34m,[0m [0mname[0m[0;34m=[0m[0mname[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   2734[0m   [0;32mexcept[0m [0mTypeError[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m<__array_function__ internals>[0m in [0;36mprod[0;34m(*args, **kwargs)[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/numpy/core/fromnumeric.py[0m in [0;36mprod[0;34m(a, axis, dtype, out, keepdims, initial, where)[0m
+[1;32m   3028[0m     [0;36m10[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   3029[0m     """
+[0;32m-> 3030[0;31m     return _wrapreduction(a, np.multiply, 'prod', axis, dtype, out,
+[0m[1;32m   3031[0m                           keepdims=keepdims, initial=initial, where=where)
+[1;32m   3032[0m [0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/numpy/core/fromnumeric.py[0m in [0;36m_wrapreduction[0;34m(obj, ufunc, method, axis, dtype, out, **kwargs)[0m
+[1;32m     85[0m                 [0;32mreturn[0m [0mreduction[0m[0;34m([0m[0maxis[0m[0;34m=[0m[0maxis[0m[0;34m,[0m [0mout[0m[0;34m=[0m[0mout[0m[0;34m,[0m [0;34m**[0m[0mpasskwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     86[0m [0;34m[0m[0m
+[0;32m---> 87[0;31m     [0;32mreturn[0m [0mufunc[0m[0;34m.[0m[0mreduce[0m[0;34m([0m[0mobj[0m[0;34m,[0m [0maxis[0m[0;34m,[0m [0mdtype[0m[0;34m,[0m [0mout[0m[0;34m,[0m [0;34m**[0m[0mpasskwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     88[0m [0;34m[0m[0m
+[1;32m     89[0m [0;34m[0m[0m
+
+[0;32m/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/framework/ops.py[0m in [0;36m__array__[0;34m(self)[0m
+[1;32m    843[0m [0;34m[0m[0m
+[1;32m    844[0m   [0;32mdef[0m [0m__array__[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 845[0;31m     raise NotImplementedError(
+[0m[1;32m    846[0m         [0;34m"Cannot convert a symbolic Tensor ({}) to a numpy array."[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    847[0m         [0;34m" This error may indicate that you're trying to pass a Tensor to"[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNotImplementedError[0m: Cannot convert a symbolic Tensor (gru/strided_slice:0) to a numpy array. This error may indicate that you're trying to pass a Tensor to a NumPy call, which is not supported
+NotImplementedError: Cannot convert a symbolic Tensor (gru/strided_slice:0) to a numpy array. This error may indicate that you're trying to pass a Tensor to a NumPy call, which is not supported
+

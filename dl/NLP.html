@@ -1,0 +1,1054 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>9. Natural Language Processing &#8212; Deep Learning for Molecules and Materials</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/a11y.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/custom.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Predicting DFT Energies with GNNs" href="../applied/QM9.html" />
+    <link rel="prev" title="8. Equivariant Neural Networks" href="Equivariant.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Deep Learning for Molecules and Materials</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Overview
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  A. Math Review
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../math/tensors-and-shapes.html">
+   1. Tensors and Shapes
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  B. Machine Learning
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ml/introduction.html">
+   1. Introduction to Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ml/regression.html">
+   2. Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ml/classification.html">
+   3. Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ml/kernel.html">
+   4. Kernel Learning
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  C. Deep Learning
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="introduction.html">
+   1. Introduction to Deep Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="layers.html">
+   2. Standard Layers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gnn.html">
+   3. Graph Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="attention.html">
+   4. Attention Layers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data.html">
+   5. Input Data &amp; Equivariances
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="VAE.html">
+   6. Variational Autoencoder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="flows.html">
+   7. Normalizing Flows
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Equivariant.html">
+   8. Equivariant Neural Networks
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   9. Natural Language Processing
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  D. Applications
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../applied/QM9.html">
+   1. Predicting DFT Energies with GNNs
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-M4Z0M1J0GT"></script><script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-M4Z0M1J0GT'); </script> Made with <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/dl/NLP.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/whitead/dmol-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/whitead/dmol-book/master?urlpath=tree/dl/NLP.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/whitead/dmol-book/blob/master/dl/NLP.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#converting-molecules-into-text">
+   9.1. Converting Molecules into Text
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#selfies">
+     9.1.1. SELFIES
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-this-notebook">
+   9.2. Running This Notebook
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#recurrent-neural-networks">
+   9.3. Recurrent Neural Networks
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generative-rnns">
+     9.3.1. Generative RNNs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#masking-padding">
+   9.4. Masking &amp; Padding
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rnn-solubility-example">
+   9.5. RNN Solubility Example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cited-references">
+   9.6. Cited References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="natural-language-processing">
+<h1><span class="section-number">9. </span>Natural Language Processing<a class="headerlink" href="#natural-language-processing" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This chapter is in progress</p>
+</div>
+<p>Working with written language is called natural language processing (NLP) and is a much broader field than deep learning. We’ll focus just on deep learning in NLP and specifically it’s application to molecules and materials. NLP in chemistry would at first appear to be a rich area, especially with the large amount of historic chemistry data existing only in plain text. However, the most work in this area has been on representations of molecules <em>as text</em> via the SMILES {cite} or SELFIES {cite} encoding. To a large extent, this is another way of “featurizing” molecules without resorting to descriptors. This is obviously an essential task in working with molecular data, but I think there are still many important opportunities to explore NLP in areas aside from featurizing molecules.</p>
+<p>One advantage of working with molecules as text relative to graph neural networks (GNNs) is that existing ML frameworks are geared towards working with text. Another reason is that it is easier to train generative models because generating valid text is easier than generating valid graphs. You’ll thus see generative/unsupervised learning of chemical space more often done with NLP, whereas GNNs are typically better for supervised learning tasks and can incorporate spatial features. NLP is also used beyond encoding molecules. NLP can be used to understand textual descriptions of materials and molecules, which is essential for <em>materials</em> that are defined with more than just the moluecular structure.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>I’m going to completely skip recurrent neural networks (RNNs). Although they have been historically important, I think they’ve been displaced by transformers and so we’ll save some space.</p>
+</div>
+<div class="section" id="converting-molecules-into-text">
+<h2><span class="section-number">9.1. </span>Converting Molecules into Text<a class="headerlink" href="#converting-molecules-into-text" title="Permalink to this headline">¶</a></h2>
+<p>Before we can begin to use neural networks, we need to convert molecules into text. Simplified molecular-input line-entry system (SMILES) is a de facto standard for converting molecules into a string. SMILES enables molecular structures to be correctly saved in spreadsheets, databases, and input to models that work on sequences like text. Here’s an example SMILES string: <code class="docutils literal notranslate"><span class="pre">CC(NC)CC1=CC=C(OCO2)C2=C1</span></code>. SMILES was crucial to the field of cheminformatics and is widely used today beyond deep learning. Some of the first deep learning work was with SMILES strings because of the ability to apply NLP models to SMILES strings.</p>
+<p>Let us imagine SMILES as a function whose domain is molecular graphs (or some equivalent complete description of a molecule) and the image is a string. The SMILES function is not surjective – there are many strings which are not valid SMILES strings. The SMILES function is injective – each graph has at least one SMILES string. The non-surjectivity actually causes some problems in generative models because strings which look like valid SMILES are actually not. The inverse function, going from SMILES string to molecular graph, is non-injective. There are multiply SMILES strings that map to the same molecular graph.  This arises from the grammar of SMILES, which allows multiply ways to specify a ring and implicit vs explicit valency or hydrogens. The inverse function is surjective – every molecular graph has at least one valid SMILES.</p>
+<p>If you’ve read the previous chapters on equivariances (<a class="reference internal" href="data.html"><span class="doc">Input Data &amp; Equivariances</span></a> and <a class="reference internal" href="Equivariant.html"><span class="doc">Equivariant Neural Networks</span></a>), a natural question is if SMILES is permutation equivariant or permutation invariant. That is, if you change the order of atoms in a way that has no effect on chemistry, is the SMILES string identical? <em>Sort of</em>. There is an extra step in making a SMILES string called canonicalization. Because multiple SMILES strings map to the same molecular graph, SMILES parsers have a systematic way of choosing a single <em>canonical</em> SMILES string to represent all the equivalent ones. <em>Canonical SMILES</em> are thus permutation invariant.</p>
+<div class="section" id="selfies">
+<h3><span class="section-number">9.1.1. </span>SELFIES<a class="headerlink" href="#selfies" title="Permalink to this headline">¶</a></h3>
+<p>Recent work from Krenn et al. developed an alternative approach to SMILES called SELF-referencIng Embedded Strings (SELFIES)<span id="id1">[<a class="reference internal" href="#id101"><span>KHN+20</span></a>]</span>. SELFIES is surjective – meaning every string is a valid molecule. Do note that the characters in SELFIES are not all ASCII characters, so it’s not like every sentence encodes a molecule. The SELFIES function is thus bijective, which makes it an excellent choice for generative models. SELFIES, as of 2021, is not directly canonicalized though and thus is not permutation invariant by itself. However, if you add canonical SMILES as an intermediate step, then SELFIES are canonical. It seems that models which output a molecule (generative or supervised) benefit from using SELFIES instead of SMILES because the model does not need to learn how to make valid strings – all strings are already valid SELFIES <span id="id2">[<a class="reference internal" href="#id102"><span>RZS20</span></a>]</span>. This benefit is less clear in supervised learning and no difference has been observed<span id="id3">[<a class="reference internal" href="#id104"><span>CGR20</span></a>]</span>.</p>
+</div>
+</div>
+<div class="section" id="running-this-notebook">
+<h2><span class="section-number">9.2. </span>Running This Notebook<a class="headerlink" href="#running-this-notebook" title="Permalink to this headline">¶</a></h2>
+<p>Click the  <i aria-label="Launch interactive content" class="fas fa-rocket"></i>  above to launch this page as an interactive Google Colab. See details below on installing packages, either on your own environment or on Google Colab</p>
+<div class="dropdown admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To install packages, execute this code in a new cell</p>
+<p><strong>For Google Colab</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!wget -c https://repo.continuum.io/miniconda/Miniconda3-py37_4.8.3-Linux-x86_64.sh
+!chmod +x Miniconda3-py37_4.8.3-Linux-x86_64.sh
+!time bash ./Miniconda3-py37_4.8.3-Linux-x86_64.sh -b -f -p /usr/local
+!time conda install -q -y -c conda-forge rdkit
+
+import sys
+sys.path.append(&#39;/usr/local/lib/python3.7/site-packages/&#39;)
+
+!conda install -c conda-forge graphviz
+!pip install jupyter-book matplotlib numpy tensorflow pydot seaborn Pillow
+</pre></div>
+</div>
+<p><strong>For Conda Env</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!conda install -c conda-forge graphviz
+!pip install jupyter-book matplotlib numpy tensorflow pydot seaborn Pillow
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="recurrent-neural-networks">
+<h2><span class="section-number">9.3. </span>Recurrent Neural Networks<a class="headerlink" href="#recurrent-neural-networks" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>String is a synonym for sequence here. Character and symbol are synonyms for token (single element of the string).</p>
+</div>
+<p>Recurrent neural networks (RNN) have been by far the most popular approach to working with molecular strings. RNNs have a critical property that they can have different length input sequences, making it appropriate for SMILES or SELFIES which both have variable length. RNNs have recurrent layers that consume an input sequence element-by-element. Consider an input vector <span class="math notranslate nohighlight">\(\vec{x} = \left[x_0, x_1,\ldots,x_L\right]\)</span>. The RNN layer function is binary and takes as input the <span class="math notranslate nohighlight">\(i\)</span>th element of the input sequence and the output from the <span class="math notranslate nohighlight">\(i - 1\)</span> layer function. You can write it as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f7284d3b-b6bc-4955-8efb-e785c12fe30f">
+<span class="eqno">(9.1)<a class="headerlink" href="#equation-f7284d3b-b6bc-4955-8efb-e785c12fe30f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+f(f\ldots f(x_0,\vec{0}), x_1), x_2)\ldots x_L)
+\end{equation}\]</div>
+<p>Commonly we would like to actually see and look at the these intermediate outputs from the layer function <span class="math notranslate nohighlight">\(f_4(x_4, f_3(\ldots)) = \vec{h}_4\)</span>. These <span class="math notranslate nohighlight">\(\vec{h}\)</span>s are called the hidden state because of the connection between RNNs and Markov State Models. We can <strong>unroll</strong> our picture of an RNN to be:</p>
+<div class="figure align-default" id="rnn">
+<a class="reference internal image-reference" href="../_images/rnn.jpg"><img alt="../_images/rnn.jpg" src="../_images/rnn.jpg" style="width: 400px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9.1 </span><span class="caption-text">Unrolled picture of RNN.</span><a class="headerlink" href="#rnn" title="Permalink to this image">¶</a></p>
+</div>
+<p>where the initial hidden state is assumed to be <span class="math notranslate nohighlight">\(\vec{0}\)</span>, but could be trained. The output at the end is shown as <span class="math notranslate nohighlight">\(\vec{y}\)</span>. <em>Notice there are no subscripts on <span class="math notranslate nohighlight">\(f\)</span> because we use the same function and weights at each step</em>. This re-use of weights makes the choice of parameter number independent of input lengths, which is also necessary to make the RNN accommodate arbitrary length input sequences. It should be noted that the length of <span class="math notranslate nohighlight">\(\vec{y}\)</span> may be a function of the input length, so that the <span class="math notranslate nohighlight">\(\vec{h}_i\)</span> may be increasing in length at each step to enable an output <span class="math notranslate nohighlight">\(\vec{y}\)</span>. Some diagrams of RNNs will show that by indicating a growing output sequence as an additional output from <span class="math notranslate nohighlight">\(f(x_i, h_{i-1})\)</span>.</p>
+<p>Interestingly, the form of <span class="math notranslate nohighlight">\(f(x, \vec{h})\)</span> is quite flexible based on the discussion above. There have been hundreds of ideas for the function <span class="math notranslate nohighlight">\(f\)</span> and it is problem dependent. The two most common are long short-term memory (LSTM) units and gated recurrent unit (GRU). You can spend quite a bit of time trying to reason about <a class="reference external" href="http://d2l.ai/chapter_recurrent-modern/gru.html">these functions</a>, understanding how <a class="reference external" href="http://d2l.ai/chapter_recurrent-neural-networks/bptt.html">gradients propagate nicely through them</a>, and there is an analogy about how they are inspired by human memory. Ultimately, they are used because they perform well and are widely-implemented so we do not need to spend much time on these details. The main thing to know is that GRUs are simpler and faster, but LSTMs seem to be better at more difficult sequences. Note that <span class="math notranslate nohighlight">\(\vec{h}\)</span> is typically 1-3 different quantities in modern implementations. Another details is the word <strong>units</strong>. Units are like the hidden state dimension, but because the hidden state could be multiple quantities (LSTM) we do not call it dimension.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Actually, they are not used so much anymore because transformers seem to be a direct replacement for RNNs.</p>
+</div>
+<p>The RNN layer allows us to input an arbitrary length sequence and outputs a label which could depend on the length of the input sequence. You can imagine that this could be used for regression or classification. <span class="math notranslate nohighlight">\(\hat{y}\)</span> would be a scalar. Or you could take the output from an RNN layer into an MLP to get a class.</p>
+<div class="section" id="generative-rnns">
+<h3><span class="section-number">9.3.1. </span>Generative RNNs<a class="headerlink" href="#generative-rnns" title="Permalink to this headline">¶</a></h3>
+<p>An interesting use case for an RNN is in unsupervised generative models, where we try to predict new examples. This means that we’re trying to learn <span class="math notranslate nohighlight">\(P(\vec{x})\)</span> <span id="id4">[<a class="reference internal" href="#id103"><span>SKTW18</span></a>]</span>. With a generative RNN, we predict the sequence one symbol at a time by conditioning on a growing sequence.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e0bf452d-19d9-4762-856a-55645deeeb3f">
+<span class="eqno">(9.2)<a class="headerlink" href="#equation-e0bf452d-19d9-4762-856a-55645deeeb3f" title="Permalink to this equation">¶</a></span>\[\begin{equation}
+P(\vec{x}) = \prod P(x_L | x_{L - 1}, x_{L - 2}, \ldots, x_0)\ldots P(x_1 | x_0) P(x_0))
+\end{equation}\]</div>
+<p>The RNN is trained to take as input a sequence and output the probability for the next character. Our network is trained to be this conditional probability: <span class="math notranslate nohighlight">\(P(x_i | x_{L - i}, x_{L - i}, \ldots, x_0)\)</span>. What about the <span class="math notranslate nohighlight">\(P(x_0)\)</span> term? Typically we just <em>pick</em> what the first character should be. Or, we could create an artificial “start” character that marks the beginning of a sequence (typically <code class="docutils literal notranslate"><span class="pre">0</span></code>) and always choose that.</p>
+<p>We can train the RNN to agree with <span class="math notranslate nohighlight">\(P(x_i | x_{L - i}, x_{L - i}, \ldots, x_0)\)</span> by taking an arbitrary sequence <span class="math notranslate nohighlight">\(\vec{x}\)</span> and choosing a split point <span class="math notranslate nohighlight">\(x_i\)</span> and training on the proceeding sequence elements. This is just multi-class classification. The number of classes is the number of available characters and our model should output a probability vector across the classes. Recall the loss for this cross-entropy.</p>
+<p>When doing this process with SMILES an obvious way to judge success would be if the generated sequences are valid SMILES strings. This at first seems reasonable and was used as a benchmark for years in this topic. However, this is a low-bar: we can find valid SMILES in much more efficient ways. You can download 77 million SMILES <span id="id5">[<a class="reference internal" href="#id104"><span>CGR20</span></a>]</span> and you can find vendors that will give you a multi-million entry database of purchasable molecules. You can also just use SELFIES and then an untrained RNN will generate only valid strings, since SELFIES is bijective. A more interesting metric is to assess if your generated molecules are in the same region of chemical space as the training data<span id="id6">[<a class="reference internal" href="#id103"><span>SKTW18</span></a>]</span>. I believe though that generative RNNs are relatively poor compared with other generative models in 2021. They are still strong though when composed with other architectures, like VAEs <span id="id7">[<a class="reference internal" href="#id105"><span>GomezBWD+18</span></a>]</span> or encoder/decoder <span id="id8">[<a class="reference internal" href="#id102"><span>RZS20</span></a>]</span>.</p>
+</div>
+</div>
+<div class="section" id="masking-padding">
+<h2><span class="section-number">9.4. </span>Masking &amp; Padding<a class="headerlink" href="#masking-padding" title="Permalink to this headline">¶</a></h2>
+<p>As in our <span id="id9">[<span>gnn</span>]</span> chapter, we run into issues with variable length inputs. The easiest and most compute efficient way to treat this is to pad (and/or trim) all strings to be the same length, making it easy to batch examples. A memory efficient way is to not batch and either batch gradients as a separate step or trim your sequences into subsequences and save the RNN hidden-state between them. Due to the way that NVIDIA has written RNN kernels, padding should always be done on the right (sequences all begin at index 0). The character used for padding is typically 0. Don’t forget, we will always first convert our string characters to integers corresponding to indices of our vocabulary (see <a class="reference internal" href="layers.html"><span class="doc">Standard Layers</span></a>). Thus, remember to make sure that the index 0 should be reserved for padding.</p>
+<p>Masking is used for two things. Masking is used to ensure that the padded values are not accidentally considered in training. This is framework dependent and you can read about <a class="reference external" href="https://keras.io/guides/understanding_masking_and_padding/">Keras here</a>, which is what we’ll use. The second use for masking is to do element-by-element training like the generative RNN. We train each time with a shorter mask, enabling it to see more of the sequence. This prevents you from needing to slice-up the training examples into many shorter sequences.</p>
+</div>
+<div class="section" id="rnn-solubility-example">
+<h2><span class="section-number">9.5. </span>RNN Solubility Example<a class="headerlink" href="#rnn-solubility-example" title="Permalink to this headline">¶</a></h2>
+<p>Let’s revisit our solubility example from before. We’ll use a GRU to <em>encode</em> the SMILES string into a vector and then apply a dense layer to get a scalar value for solubility. Let’s revisit the solubility AqSolDB<span id="id10">[<a class="reference internal" href="../ml/regression.html#id10"><span>SKE19</span></a>]</span> dataset from <span class="xref std std-doc">regression</span>. Recall it has about 10,000 unique compounds with measured solubility in water (label) and their SMILES strings. Many of the steps below are explained in the <a class="reference internal" href="layers.html"><span class="doc">Standard Layers</span></a> chapter that introduces Keras and the principles of building a deep model.</p>
+<p>I’ve hidden the cell below which sets-up our imports and shown a few rows of the dataset.</p>
+<div class="cell tag_hide-cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;notebook&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s1">&#39;dark&#39;</span><span class="p">,</span>  <span class="p">{</span><span class="s1">&#39;xtick.bottom&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;ytick.left&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span> <span class="s1">&#39;xtick.color&#39;</span><span class="p">:</span> <span class="s1">&#39;#666666&#39;</span><span class="p">,</span> <span class="s1">&#39;ytick.color&#39;</span><span class="p">:</span> <span class="s1">&#39;#666666&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;axes.edgecolor&#39;</span><span class="p">:</span> <span class="s1">&#39;#666666&#39;</span><span class="p">,</span> <span class="s1">&#39;axes.linewidth&#39;</span><span class="p">:</span>     <span class="mf">0.8</span> <span class="p">,</span> <span class="s1">&#39;figure.dpi&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">})</span>
+<span class="n">color_cycle</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#1BBC9B&#39;</span><span class="p">,</span> <span class="s1">&#39;#F06060&#39;</span><span class="p">,</span> <span class="s1">&#39;#5C4B51&#39;</span><span class="p">,</span> <span class="s1">&#39;#F3B562&#39;</span><span class="p">,</span> <span class="s1">&#39;#6e5687&#39;</span><span class="p">]</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.prop_cycle&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">color_cycle</span><span class="p">)</span> 
+<span class="n">soldata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://dataverse.harvard.edu/api/access/datafile/3407241?format=original&amp;gbrecs=true&#39;</span><span class="p">)</span>
+<span class="n">features_start_at</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">soldata</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;MolWt&#39;</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soldata</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>InChI</th>
+      <th>InChIKey</th>
+      <th>SMILES</th>
+      <th>Solubility</th>
+      <th>SD</th>
+      <th>Ocurrences</th>
+      <th>Group</th>
+      <th>MolWt</th>
+      <th>...</th>
+      <th>NumRotatableBonds</th>
+      <th>NumValenceElectrons</th>
+      <th>NumAromaticRings</th>
+      <th>NumSaturatedRings</th>
+      <th>NumAliphaticRings</th>
+      <th>RingCount</th>
+      <th>TPSA</th>
+      <th>LabuteASA</th>
+      <th>BalabanJ</th>
+      <th>BertzCT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A-3</td>
+      <td>N,N,N-trimethyloctadecan-1-aminium bromide</td>
+      <td>InChI=1S/C21H46N.BrH/c1-5-6-7-8-9-10-11-12-13-...</td>
+      <td>SZEMGTQCPRNXEG-UHFFFAOYSA-M</td>
+      <td>[Br-].CCCCCCCCCCCCCCCCCC[N+](C)(C)C</td>
+      <td>-3.616127</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>G1</td>
+      <td>392.510</td>
+      <td>...</td>
+      <td>17.0</td>
+      <td>142.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.00</td>
+      <td>158.520601</td>
+      <td>0.000000e+00</td>
+      <td>210.377334</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A-4</td>
+      <td>Benzo[cd]indol-2(1H)-one</td>
+      <td>InChI=1S/C11H7NO/c13-11-8-5-1-3-7-4-2-6-9(12-1...</td>
+      <td>GPYLCFQEKPUWLD-UHFFFAOYSA-N</td>
+      <td>O=C1Nc2cccc3cccc1c23</td>
+      <td>-3.254767</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>G1</td>
+      <td>169.183</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>62.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>29.10</td>
+      <td>75.183563</td>
+      <td>2.582996e+00</td>
+      <td>511.229248</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A-5</td>
+      <td>4-chlorobenzaldehyde</td>
+      <td>InChI=1S/C7H5ClO/c8-7-3-1-6(5-9)2-4-7/h1-5H</td>
+      <td>AVPYQKSLYISFPO-UHFFFAOYSA-N</td>
+      <td>Clc1ccc(C=O)cc1</td>
+      <td>-2.177078</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>G1</td>
+      <td>140.569</td>
+      <td>...</td>
+      <td>1.0</td>
+      <td>46.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>17.07</td>
+      <td>58.261134</td>
+      <td>3.009782e+00</td>
+      <td>202.661065</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A-8</td>
+      <td>zinc bis[2-hydroxy-3,5-bis(1-phenylethyl)benzo...</td>
+      <td>InChI=1S/2C23H22O3.Zn/c2*1-15(17-9-5-3-6-10-17...</td>
+      <td>XTUPUYCJWKHGSW-UHFFFAOYSA-L</td>
+      <td>[Zn++].CC(c1ccccc1)c2cc(C(C)c3ccccc3)c(O)c(c2)...</td>
+      <td>-3.924409</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>G1</td>
+      <td>756.226</td>
+      <td>...</td>
+      <td>10.0</td>
+      <td>264.0</td>
+      <td>6.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>6.0</td>
+      <td>120.72</td>
+      <td>323.755434</td>
+      <td>2.322963e-07</td>
+      <td>1964.648666</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>A-9</td>
+      <td>4-({4-[bis(oxiran-2-ylmethyl)amino]phenyl}meth...</td>
+      <td>InChI=1S/C25H30N2O4/c1-5-20(26(10-22-14-28-22)...</td>
+      <td>FAUAZXVRLVIARB-UHFFFAOYSA-N</td>
+      <td>C1OC1CN(CC2CO2)c3ccc(Cc4ccc(cc4)N(CC5CO5)CC6CO...</td>
+      <td>-4.662065</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>G1</td>
+      <td>422.525</td>
+      <td>...</td>
+      <td>12.0</td>
+      <td>164.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>6.0</td>
+      <td>56.60</td>
+      <td>183.183268</td>
+      <td>1.084427e+00</td>
+      <td>769.899934</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 26 columns</p>
+</div></div></div>
+</div>
+<p>We’ll extract our labels and convert SMILES into padded characters. We make use of a <strong>tokenizer</strong>, which is essentially a look-up table for how to go from the characters in a SMILES string to integers. To make our model run faster, I will filter out very long SMILES strings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># filter out long smiles</span>
+<span class="n">smask</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">96</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">soldata</span><span class="o">.</span><span class="n">SMILES</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Removed </span><span class="si">{</span><span class="n">soldata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">smask</span><span class="p">)</span><span class="si">}</span><span class="s1"> long SMILES strings&#39;</span><span class="p">)</span>
+<span class="n">filtered_soldata</span> <span class="o">=</span> <span class="n">soldata</span><span class="p">[</span><span class="n">smask</span><span class="p">]</span>
+
+<span class="c1"># make tokenizer with 128 size vocab and </span>
+<span class="c1"># have it examine all text in dataset</span>
+<span class="n">vocab_size</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">Tokenizer</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">char_level</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">tokenizer</span><span class="o">.</span><span class="n">fit_on_texts</span><span class="p">(</span><span class="n">filtered_soldata</span><span class="o">.</span><span class="n">SMILES</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Removed 285 long SMILES strings
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># now get padded sequences</span>
+<span class="n">seqs</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">texts_to_sequences</span><span class="p">(</span><span class="n">filtered_soldata</span><span class="o">.</span><span class="n">SMILES</span><span class="p">)</span>
+<span class="n">padded_seqs</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">pad_sequences</span><span class="p">(</span><span class="n">seqs</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">)</span>
+
+<span class="c1"># Now build dataset</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="o">.</span><span class="n">from_tensor_slices</span><span class="p">((</span><span class="n">padded_seqs</span><span class="p">,</span> <span class="n">filtered_soldata</span><span class="o">.</span><span class="n">Solubility</span><span class="p">))</span>
+<span class="c1"># now split into val, test, train and batch</span>
+<span class="n">N</span> <span class="o">=</span> <span class="n">soldata</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">split</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">split</span><span class="p">)</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">nontest</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="n">split</span><span class="p">)</span>
+<span class="n">val_data</span><span class="p">,</span> <span class="n">train_data</span> <span class="o">=</span> <span class="n">nontest</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">split</span><span class="p">)</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="n">nontest</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="n">split</span><span class="p">)</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’re now ready to build our model. We will just use an embedding then RNN and some dense layers to get to a final predicted solubility.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">()</span>
+
+<span class="c1"># make embedding and indicate that 0 should be treated as padding mask</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">input_dim</span><span class="o">=</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">output_dim</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">mask_zero</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="c1"># RNN layer</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">GRU</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span>
+<span class="c1"># a dense hidden layer</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+<span class="c1"># regression, so no activation</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">5</span><span class="o">-</span><span class="n">e54039901c87</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># RNN layer</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">GRU</span><span class="p">(</span><span class="mi">32</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># a dense hidden layer</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">))</span>
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/training/tracking/base.py</span> in <span class="ni">_method_wrapper</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">455</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_self_setattr_tracking</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># pylint: disable=protected-access</span>
+<span class="g g-Whitespace">    </span><span class="mi">456</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">457</span>       <span class="n">result</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">458</span>     <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">459</span>       <span class="bp">self</span><span class="o">.</span><span class="n">_self_setattr_tracking</span> <span class="o">=</span> <span class="n">previous_value</span>  <span class="c1"># pylint: disable=protected-access</span>
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/engine/sequential.py</span> in <span class="ni">add</span><span class="nt">(self, layer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">219</span>       <span class="c1"># If the model is being built continuously on top of an input layer:</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span>       <span class="c1"># refresh its output.</span>
+<span class="ne">--&gt; </span><span class="mi">221</span>       <span class="n">output_tensor</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span>       <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nest</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">output_tensor</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">SINGLE_LAYER_OUTPUT_ERROR_MSG</span><span class="p">)</span>
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/layers/recurrent.py</span> in <span class="ni">__call__</span><span class="nt">(self, inputs, initial_state, constants, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">657</span> 
+<span class="g g-Whitespace">    </span><span class="mi">658</span>     <span class="k">if</span> <span class="n">initial_state</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">constants</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">659</span>       <span class="k">return</span> <span class="nb">super</span><span class="p">(</span><span class="n">RNN</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__call__</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">660</span> 
+<span class="g g-Whitespace">    </span><span class="mi">661</span>     <span class="c1"># If any of `initial_state` or `constants` are specified and are Keras</span>
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/engine/base_layer.py</span> in <span class="ni">__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">923</span>     <span class="c1"># &gt;&gt; model = tf.keras.Model(inputs, outputs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">924</span>     <span class="k">if</span> <span class="n">_in_functional_construction_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">input_list</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">925</span>       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_functional_construction_call</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">926</span>                                                 <span class="n">input_list</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">927</span> 
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/engine/base_layer.py</span> in <span class="ni">_functional_construction_call</span><span class="nt">(self, inputs, args, kwargs, input_list)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1115</span>           <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1116</span>             <span class="k">with</span> <span class="n">ops</span><span class="o">.</span><span class="n">enable_auto_cast_variables</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_compute_dtype_object</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1117</span>               <span class="n">outputs</span> <span class="o">=</span> <span class="n">call_fn</span><span class="p">(</span><span class="n">cast_inputs</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1118</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1119</span>           <span class="k">except</span> <span class="n">errors</span><span class="o">.</span><span class="n">OperatorNotAllowedInGraphError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/layers/recurrent_v2.py</span> in <span class="ni">call</span><span class="nt">(self, inputs, mask, training, initial_state)</span>
+<span class="g g-Whitespace">    </span><span class="mi">407</span> 
+<span class="g g-Whitespace">    </span><span class="mi">408</span>     <span class="c1"># GRU does not support constants. Ignore it during process.</span>
+<span class="ne">--&gt; </span><span class="mi">409</span>     <span class="n">inputs</span><span class="p">,</span> <span class="n">initial_state</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_inputs</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">initial_state</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">410</span> 
+<span class="g g-Whitespace">    </span><span class="mi">411</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/layers/recurrent.py</span> in <span class="ni">_process_inputs</span><span class="nt">(self, inputs, initial_state, constants)</span>
+<span class="g g-Whitespace">    </span><span class="mi">856</span>         <span class="n">initial_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">states</span>
+<span class="g g-Whitespace">    </span><span class="mi">857</span>     <span class="k">elif</span> <span class="n">initial_state</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">858</span>       <span class="n">initial_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_initial_state</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">859</span> 
+<span class="g g-Whitespace">    </span><span class="mi">860</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">initial_state</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">states</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/layers/recurrent.py</span> in <span class="ni">get_initial_state</span><span class="nt">(self, inputs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">639</span>     <span class="n">dtype</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">dtype</span>
+<span class="g g-Whitespace">    </span><span class="mi">640</span>     <span class="k">if</span> <span class="n">get_initial_state_fn</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">641</span>       <span class="n">init_state</span> <span class="o">=</span> <span class="n">get_initial_state_fn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">642</span>           <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">643</span>     <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/layers/recurrent.py</span> in <span class="ni">get_initial_state</span><span class="nt">(self, inputs, batch_size, dtype)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1947</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1948</span>   <span class="k">def</span> <span class="nf">get_initial_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1949</span>     <span class="k">return</span> <span class="n">_generate_zero_filled_state_for_cell</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1950</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1951</span> 
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/layers/recurrent.py</span> in <span class="ni">_generate_zero_filled_state_for_cell</span><span class="nt">(cell, inputs, batch_size, dtype)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2962</span>     <span class="n">batch_size</span> <span class="o">=</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">inputs</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">2963</span>     <span class="n">dtype</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">dtype</span>
+<span class="ne">-&gt; </span><span class="mi">2964</span>   <span class="k">return</span> <span class="n">_generate_zero_filled_state</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">cell</span><span class="o">.</span><span class="n">state_size</span><span class="p">,</span> <span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2965</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2966</span> 
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/layers/recurrent.py</span> in <span class="ni">_generate_zero_filled_state</span><span class="nt">(batch_size_tensor, state_size, dtype)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2980</span>     <span class="k">return</span> <span class="n">nest</span><span class="o">.</span><span class="n">map_structure</span><span class="p">(</span><span class="n">create_zeros</span><span class="p">,</span> <span class="n">state_size</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2981</span>   <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2982</span>     <span class="k">return</span> <span class="n">create_zeros</span><span class="p">(</span><span class="n">state_size</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2983</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2984</span> 
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/keras/layers/recurrent.py</span> in <span class="ni">create_zeros</span><span class="nt">(unnested_state_size)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2975</span>     <span class="n">flat_dims</span> <span class="o">=</span> <span class="n">tensor_shape</span><span class="o">.</span><span class="n">as_shape</span><span class="p">(</span><span class="n">unnested_state_size</span><span class="p">)</span><span class="o">.</span><span class="n">as_list</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">2976</span>     <span class="n">init_state_size</span> <span class="o">=</span> <span class="p">[</span><span class="n">batch_size_tensor</span><span class="p">]</span> <span class="o">+</span> <span class="n">flat_dims</span>
+<span class="ne">-&gt; </span><span class="mi">2977</span>     <span class="k">return</span> <span class="n">array_ops</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">init_state_size</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2978</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2979</span>   <span class="k">if</span> <span class="n">nest</span><span class="o">.</span><span class="n">is_sequence</span><span class="p">(</span><span class="n">state_size</span><span class="p">):</span>
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/util/dispatch.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">199</span>     <span class="sd">&quot;&quot;&quot;Call target, and fall back on dispatchers if there is a TypeError.&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">200</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">201</span>       <span class="k">return</span> <span class="n">target</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">202</span>     <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">203</span>       <span class="c1"># Note: convert_to_eager_tensor currently raises a ValueError, not a</span>
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/ops/array_ops.py</span> in <span class="ni">wrapped</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2745</span> 
+<span class="g g-Whitespace">   </span><span class="mi">2746</span>   <span class="k">def</span> <span class="nf">wrapped</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2747</span>     <span class="n">tensor</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2748</span>     <span class="n">tensor</span><span class="o">.</span><span class="n">_is_zeros_tensor</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="g g-Whitespace">   </span><span class="mi">2749</span>     <span class="k">return</span> <span class="n">tensor</span>
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/ops/array_ops.py</span> in <span class="ni">zeros</span><span class="nt">(shape, dtype, name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2792</span>           <span class="c1"># Create a constant if it won&#39;t be very big. Otherwise create a fill</span>
+<span class="g g-Whitespace">   </span><span class="mi">2793</span>           <span class="c1"># op to prevent serialized GraphDefs from becoming too large.</span>
+<span class="ne">-&gt; </span><span class="mi">2794</span>           <span class="n">output</span> <span class="o">=</span> <span class="n">_constant_if_small</span><span class="p">(</span><span class="n">zero</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2795</span>           <span class="k">if</span> <span class="n">output</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2796</span>             <span class="k">return</span> <span class="n">output</span>
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/ops/array_ops.py</span> in <span class="ni">_constant_if_small</span><span class="nt">(value, shape, dtype, name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2730</span> <span class="k">def</span> <span class="nf">_constant_if_small</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">2731</span>   <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2732</span>     <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2733</span>       <span class="k">return</span> <span class="n">constant</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2734</span>   <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+
+<span class="nn">&lt;__array_function__ internals&gt;</span> in <span class="ni">prod</span><span class="nt">(*args, **kwargs)</span>
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/numpy/core/fromnumeric.py</span> in <span class="ni">prod</span><span class="nt">(a, axis, dtype, out, keepdims, initial, where)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3028</span>     <span class="mi">10</span>
+<span class="g g-Whitespace">   </span><span class="mi">3029</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">3030</span><span class="s2">     return _wrapreduction(a, np.multiply, &#39;prod&#39;, axis, dtype, out,</span>
+<span class="g g-Whitespace">   </span><span class="mi">3031</span><span class="s2">                           keepdims=keepdims, initial=initial, where=where)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3032</span><span class="s2"> </span>
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/numpy/core/fromnumeric.py</span> in <span class="ni">_wrapreduction</span><span class="nt">(obj, ufunc, method, axis, dtype, out, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span><span class="s2">                 return reduction(axis=axis, out=out, **passkwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span><span class="s2"> </span>
+<span class="ne">---&gt; </span><span class="mi">87</span><span class="s2">     return ufunc.reduce(obj, axis, dtype, out, **passkwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span><span class="s2"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span><span class="s2"> </span>
+
+<span class="nn">/usr/share/miniconda/lib/python3.8/site-packages/tensorflow/python/framework/ops.py</span> in <span class="ni">__array__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">843</span><span class="s2"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">844</span><span class="s2">   def __array__(self):</span>
+<span class="ne">--&gt; </span><span class="mi">845</span><span class="s2">     raise NotImplementedError(</span>
+<span class="g g-Whitespace">    </span><span class="mi">846</span><span class="s2">         &quot;Cannot convert a symbolic Tensor (</span><span class="si">{}</span><span class="s2">) to a numpy array.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">847</span><span class="s2">         &quot; This error may indicate that you&#39;re trying to pass a Tensor to&quot;</span>
+
+<span class="ne">NotImplementedError</span>: Cannot convert a symbolic Tensor (gru/strided_slice:0) to a numpy array. This error may indicate that you&#39;re trying to pass a Tensor to a NumPy call, which is not supported
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we’ll compile our model and train it. This is a regression problem, so we use mean squared error for our loss.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="mf">1e-2</span><span class="p">),</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="n">val_data</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/25
+482/482 - 15s - loss: 2.8115 - val_loss: 5.1160
+Epoch 2/25
+482/482 - 11s - loss: 1.8369 - val_loss: 3.8414
+Epoch 3/25
+482/482 - 11s - loss: 1.6268 - val_loss: 3.5766
+Epoch 4/25
+482/482 - 11s - loss: 1.5000 - val_loss: 3.9586
+Epoch 5/25
+482/482 - 11s - loss: 1.4427 - val_loss: 3.1998
+Epoch 6/25
+482/482 - 11s - loss: 1.3033 - val_loss: 3.5239
+Epoch 7/25
+482/482 - 11s - loss: 1.2730 - val_loss: 3.2192
+Epoch 8/25
+482/482 - 12s - loss: 1.2074 - val_loss: 3.5587
+Epoch 9/25
+482/482 - 11s - loss: 1.1779 - val_loss: 3.2726
+Epoch 10/25
+482/482 - 11s - loss: 1.1308 - val_loss: 3.1533
+Epoch 11/25
+482/482 - 11s - loss: 1.1293 - val_loss: 3.1808
+Epoch 12/25
+482/482 - 11s - loss: 1.0925 - val_loss: 3.1307
+Epoch 13/25
+482/482 - 11s - loss: 1.0980 - val_loss: 3.1179
+Epoch 14/25
+482/482 - 11s - loss: 1.1032 - val_loss: 3.5157
+Epoch 15/25
+482/482 - 11s - loss: 1.0152 - val_loss: 3.2783
+Epoch 16/25
+482/482 - 11s - loss: 1.0061 - val_loss: 3.3763
+Epoch 17/25
+482/482 - 11s - loss: 1.0307 - val_loss: 3.3265
+Epoch 18/25
+482/482 - 11s - loss: 1.0409 - val_loss: 3.2475
+Epoch 19/25
+482/482 - 11s - loss: 1.0633 - val_loss: 3.6029
+Epoch 20/25
+482/482 - 11s - loss: 1.0284 - val_loss: 3.1714
+Epoch 21/25
+482/482 - 11s - loss: 0.9688 - val_loss: 3.4072
+Epoch 22/25
+482/482 - 11s - loss: 1.0190 - val_loss: 3.0606
+Epoch 23/25
+482/482 - 11s - loss: 0.9674 - val_loss: 3.0618
+Epoch 24/25
+482/482 - 11s - loss: 0.9816 - val_loss: 3.4048
+Epoch 25/25
+482/482 - 11s - loss: 0.9660 - val_loss: 3.1826
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;training&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;validation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epoch&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Loss&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NLP_16_0.png" src="../_images/NLP_16_0.png" />
+</div>
+</div>
+<p>As usual, we could keep training and I encourage you to explore adding regularization or modifying the architecture. Let’s now see how the test data looks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># evaluate on test data</span>
+<span class="n">yhat</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">test_y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="n">test_data</span><span class="p">:</span>
+    <span class="n">yhat</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+    <span class="n">test_y</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+<span class="n">yhat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">yhat</span><span class="p">)</span>
+<span class="n">test_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot test data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">test_y</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">yhat</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;correlation = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">test_y</span><span class="p">,</span> <span class="n">yhat</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;loss = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">test_y</span> <span class="o">-</span> <span class="n">yhat</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Testing Data&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/NLP_19_0.png" src="../_images/NLP_19_0.png" />
+</div>
+</div>
+<p>Linear regression from <a class="reference internal" href="../ml/regression.html"><span class="doc">Regression</span></a> still wins, but this demonstrates the example.</p>
+</div>
+<div class="section" id="cited-references">
+<h2><span class="section-number">9.6. </span>Cited References<a class="headerlink" href="#cited-references" title="Permalink to this headline">¶</a></h2>
+<p id="id11"><dl class="citation">
+<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id10">SKE19</a></span></dt>
+<dd><p>Murat Cihan Sorkun, Abhishek Khetan, and Süleyman Er. AqSolDB, a curated reference set of aqueous solubility and 2D descriptors for a diverse set of compounds. <em>Sci. Data</em>, 6(1):143, 2019. <a class="reference external" href="https://doi.org/10.1038/s41597-019-0151-1">doi:10.1038/s41597-019-0151-1</a>.</p>
+</dd>
+<dt class="label" id="id101"><span class="brackets"><a class="fn-backref" href="#id1">KHN+20</a></span></dt>
+<dd><p>Mario Krenn, Florian Häse, AkshatKumar Nigam, Pascal Friederich, and Alan Aspuru-Guzik. Self-referencing embedded strings (SELFIES): a 100% robust molecular string representation. <em>Machine Learning: Science and Technology</em>, 1(4):045024, nov 2020. URL: <a class="reference external" href="https://doi.org/10.1088/2632-2153/aba947">https://doi.org/10.1088/2632-2153/aba947</a>, <a class="reference external" href="https://doi.org/10.1088/2632-2153/aba947">doi:10.1088/2632-2153/aba947</a>.</p>
+</dd>
+<dt class="label" id="id102"><span class="brackets">RZS20</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id8">2</a>)</span></dt>
+<dd><p>Kohulan Rajan, Achim Zielesny, and Christoph Steinbeck. Decimer: towards deep learning for chemical image recognition. <em>Journal of Cheminformatics</em>, 12(1):1–9, 2020.</p>
+</dd>
+<dt class="label" id="id104"><span class="brackets">CGR20</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id5">2</a>)</span></dt>
+<dd><p>Seyone Chithrananda, Gabe Grand, and Bharath Ramsundar. Chemberta: large-scale self-supervised pretraining for molecular property prediction. <em>arXiv preprint arXiv:2010.09885</em>, 2020.</p>
+</dd>
+<dt class="label" id="id103"><span class="brackets">SKTW18</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id6">2</a>)</span></dt>
+<dd><p>Marwin HS Segler, Thierry Kogej, Christian Tyrchan, and Mark P Waller. Generating focused molecule libraries for drug discovery with recurrent neural networks. <em>ACS central science</em>, 4(1):120–131, 2018.</p>
+</dd>
+<dt class="label" id="id105"><span class="brackets"><a class="fn-backref" href="#id7">GomezBWD+18</a></span></dt>
+<dd><p>Rafael Gómez-Bombarelli, Jennifer N Wei, David Duvenaud, José Miguel Hernández-Lobato, Benjamín Sánchez-Lengeling, Dennis Sheberla, Jorge Aguilera-Iparraguirre, Timothy D Hirzel, Ryan P Adams, and Alán Aspuru-Guzik. Automatic chemical design using a data-driven continuous representation of molecules. <em>ACS central science</em>, 4(2):268–276, 2018.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./dl"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="Equivariant.html" title="previous page"><span class="section-number">8. </span>Equivariant Neural Networks</a>
+    <a class='right-next' id="next-link" href="../applied/QM9.html" title="next page"><span class="section-number">1. </span>Predicting DFT Energies with GNNs</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Andrew D. White<br/>
+        
+            &copy; Copyright 2020.<br/>
+          <div class="extra_footer">
+            <a href="http://thewhitelab.org">thewhitelab.org</a> <div id="wh-modal"> <button class="wh-venti-button" aria-label="close modal" id="wh-modal-close">✕</button> <img id="wh-modal-img"> </div>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
